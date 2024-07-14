@@ -62,13 +62,13 @@ export function getRandomElement(array) {
   return array[randomIndex];
 }
 
-function getRandomHexColor() {
+export function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215)
     .toString(16)
     .padStart(6, 0)}`;
 }
 
-function getRandomColorRgba() {
+export function getRandomColorRgba() {
   const r = Math.floor(Math.random() * 256);
   const g = Math.floor(Math.random() * 256);
   const b = Math.floor(Math.random() * 256);
@@ -76,7 +76,7 @@ function getRandomColorRgba() {
   return `rgba(${r}, ${g}, ${b}, ${a.toFixed(2)})`;
 }
 
-const capitalizeFirstLetter = (str) => {
+export const capitalizeFirstLetter = (str) => {
     if (!str) return str;
     return str.charAt(0).toUpperCase() + str.slice(1);
 };
