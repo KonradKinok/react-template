@@ -23,11 +23,11 @@ export function htmlTagViewExample(
 }
 
 /**
- *LocalStorage save
+ *LocalStorage saveLocalStorage
  * @param {string} key
  * @param {object} value
  */
-export const save = (key, value) => {
+export const saveLocalStorage = (key: string, value) => {
   try {
     const serializedState = JSON.stringify(value);
     localStorage.setItem(key, serializedState);
@@ -41,7 +41,7 @@ export const save = (key, value) => {
  * @param {*} key
  * @returns
  */
-export const load = key => {
+export const loadLocalStorage = key => {
   try {
     const serializedState = localStorage.getItem(key);
     return serializedState === null ? undefined : JSON.parse(serializedState);
