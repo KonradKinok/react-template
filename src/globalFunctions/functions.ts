@@ -1,33 +1,34 @@
 "use strict";
+
 /**
  *
  * @param {string} tagDivAndIdExampleTheory
  * @param {string} tagDivAndIdExamplePractice
  */
 export function htmlTagViewExample(
-  tagDivAndIdExampleTheory,
-  tagDivAndIdExamplePractice,
-  className = "example-theory-pre",
-) {
+  tagDivAndIdExampleTheory: string,
+  tagDivAndIdExamplePractice: string,
+  className: string = "example-theory-pre"
+): void {
   const example_theory = document.querySelector(tagDivAndIdExampleTheory);
   const example_practice = document.querySelector(tagDivAndIdExamplePractice);
 
-  const phrase = document.createElement("pre");
-  phrase.classList.add(className);
-  const examplePracticeInnerHtml = example_practice.innerHTML
-    .split("  ")
-    .join("");
+  if (example_theory && example_practice) {
+    const phrase = document.createElement("pre");
+    phrase.classList.add(className);
+    const examplePracticeInnerHtml = example_practice.innerHTML.split("  ").join("");
 
-  phrase.textContent = `HTML: ${examplePracticeInnerHtml}`;
-  example_theory.prepend(phrase);
+    phrase.textContent = `HTML: ${examplePracticeInnerHtml}`;
+    example_theory.prepend(phrase);
+  }
 }
 
 /**
- *LocalStorage saveLocalStorage
+ * LocalStorage saveLocalStorage
  * @param {string} key
  * @param {object} value
  */
-export const saveLocalStorage = (key, value) => {
+export const saveLocalStorage = (key: string, value: object): void => {
   try {
     const serializedState = JSON.stringify(value);
     localStorage.setItem(key, serializedState);
@@ -37,38 +38,47 @@ export const saveLocalStorage = (key, value) => {
 };
 
 /**
- *localStorage load
- * @param {*} key
- * @returns
+ * localStorage load
+ * @param {string} key
+ * @returns {object | undefined}
  */
-export const loadLocalStorage = (key) => {
+export const loadLocalStorage = (key: string): object | undefined => {
   try {
     const serializedState = localStorage.getItem(key);
     return serializedState === null ? undefined : JSON.parse(serializedState);
   } catch (error) {
     console.error("Get state error: ", error.message);
+    return undefined;
   }
 };
 
-/**getRandomElement
- *
- * @param {Array} array
- * @returns
+/**
+ * getRandomElement
+ * @param {Array<any>} array
+ * @returns {any}
  */
-export function getRandomElement(array) {
+export function getRandomElement(array: Array<any>): any {
   // Generuj losowy indeks od 0 do array.length - 1
   const randomIndex = Math.floor(Math.random() * array.length);
   // Zwróć wybrany element
   return array[randomIndex];
 }
 
-export function getRandomHexColor() {
+/**
+ * getRandomHexColor
+ * @returns {string}
+ */
+export function getRandomHexColor(): string {
   return `#${Math.floor(Math.random() * 16777215)
     .toString(16)
-    .padStart(6, 0)}`;
+    .padStart(6, "0")}`;
 }
 
-export function getRandomColorRgba() {
+/**
+ * getRandomColorRgba
+ * @returns {string}
+ */
+export function getRandomColorRgba(): string {
   const r = Math.floor(Math.random() * 256);
   const g = Math.floor(Math.random() * 256);
   const b = Math.floor(Math.random() * 256);
@@ -76,7 +86,12 @@ export function getRandomColorRgba() {
   return `rgba(${r}, ${g}, ${b}, ${a.toFixed(2)})`;
 }
 
-export const capitalizeFirstLetter = (str) => {
+/**
+ * capitalizeFirstLetter
+ * @param {string} str
+ * @returns {string}
+ */
+export const capitalizeFirstLetter = (str: string): string => {
   if (!str) return str;
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
