@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 /**
  *
  * @param {string} tagDivAndIdExampleTheory
@@ -7,16 +7,16 @@
 export function htmlTagViewExample(
   tagDivAndIdExampleTheory,
   tagDivAndIdExamplePractice,
-  className = 'example-theory-pre'
+  className = "example-theory-pre",
 ) {
   const example_theory = document.querySelector(tagDivAndIdExampleTheory);
   const example_practice = document.querySelector(tagDivAndIdExamplePractice);
 
-  const phrase = document.createElement('pre');
+  const phrase = document.createElement("pre");
   phrase.classList.add(className);
   const examplePracticeInnerHtml = example_practice.innerHTML
-    .split('  ')
-    .join('');
+    .split("  ")
+    .join("");
 
   phrase.textContent = `HTML: ${examplePracticeInnerHtml}`;
   example_theory.prepend(phrase);
@@ -27,12 +27,12 @@ export function htmlTagViewExample(
  * @param {string} key
  * @param {object} value
  */
-export const saveLocalStorage = (key: string, value) => {
+export const saveLocalStorage = (key, value) => {
   try {
     const serializedState = JSON.stringify(value);
     localStorage.setItem(key, serializedState);
   } catch (error) {
-    console.error('Set state error: ', error.message);
+    console.error("Set state error: ", error.message);
   }
 };
 
@@ -41,12 +41,12 @@ export const saveLocalStorage = (key: string, value) => {
  * @param {*} key
  * @returns
  */
-export const loadLocalStorage = key => {
+export const loadLocalStorage = (key) => {
   try {
     const serializedState = localStorage.getItem(key);
     return serializedState === null ? undefined : JSON.parse(serializedState);
   } catch (error) {
-    console.error('Get state error: ', error.message);
+    console.error("Get state error: ", error.message);
   }
 };
 
@@ -77,6 +77,6 @@ export function getRandomColorRgba() {
 }
 
 export const capitalizeFirstLetter = (str) => {
-    if (!str) return str;
-    return str.charAt(0).toUpperCase() + str.slice(1);
+  if (!str) return str;
+  return str.charAt(0).toUpperCase() + str.slice(1);
 };
