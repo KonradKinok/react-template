@@ -115,3 +115,14 @@ export function formatDateAndHour(dateStr: string):string {
   const seconds = String(date.getSeconds()).padStart(2, '0');
   return `${day}.${month}.${year}y. ${hour}:${minutes}:${seconds}`;
 };
+
+//get key and value from object
+export function getKeyAndValueFromObject(obj: Record<string, any>): string[]{
+let listOfItems: string[]=[]
+  console.log(`Key and value for object: ${obj}`)
+  Object.entries(obj).forEach(([key, value]: [string, any]) => {
+    listOfItems.push(`${key}: ${value}`)
+  console.log(`${key}: ${value}`);
+  });
+  return listOfItems;
+}
